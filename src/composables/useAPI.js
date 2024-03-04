@@ -15,5 +15,16 @@ export default function useAPI() {
         }
     }
 
-    return { instance, categories, getCategories}
+    const getQuestion = async (categoryId) => {
+        const responce = await instance.get('api.php', {
+            params: {
+                amount: 1,
+                category: categoryId,
+            }
+        })
+
+        return responce.data.results[0]
+    }
+
+    return { instance, categories, getCategories, getQuestion}
 }
