@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue';
 import useAPI from '@/composables/useAPI';
 import { useRoute } from 'vue-router';
-
+import BaseTitle from '@/components/BaseTitle.vue';
 const api = useAPI()
 const question = ref(null)
 const route = useRoute()
@@ -17,5 +17,15 @@ onMounted(async () => {
 
 
 <template>
-  {{ question }}
+    
+    <div v-if="question" class="">
+      <BaseTitle>{{ question.category }}</BaseTitle>
+      {{ question.question }}
+    </div>
+    <div v-else class="">
+      Loading...
+    </div>
+
 </template>
+
+
